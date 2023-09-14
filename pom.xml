@@ -28,15 +28,10 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <!-- Using JUnit 4 with Cucumber -->
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
             <version>7.14.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>3.24.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

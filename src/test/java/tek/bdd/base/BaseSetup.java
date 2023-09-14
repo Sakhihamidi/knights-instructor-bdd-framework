@@ -9,6 +9,7 @@ public class BaseSetup {
 
     //Encapsulation Concept of Java
     private static WebDriver driver;
+    private final String APP_URL = "https://qa.insurance.tekschool-students.com/";
 
     public void openBrowser() {
         //Targeting Chrome Browser.
@@ -16,6 +17,12 @@ public class BaseSetup {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        driver.get(APP_URL);
+    }
+
+    public void driverQuit() {
+        if (driver != null)
+            driver.close();
     }
 
     //Ready only Getter to read get Driver instance.
