@@ -3,7 +3,13 @@ package tek.bdd.steps;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import tek.bdd.utility.SeleniumUtility;
+
+import java.time.Duration;
 
 public class CommonSteps extends SeleniumUtility {
 
@@ -25,5 +31,14 @@ public class CommonSteps extends SeleniumUtility {
     @Then("Close browser")
     public void closeBrowser() {
         driverQuit();
+    }
+
+    @Then("Validate the header title is {string}")
+    public void validateHeaderTitle(String expectedHeaderTitle) {
+        By pageTitle = By.xpath("//mat-toolbar/span[1]");
+        String actualHeaderTitle = getElementText(pageTitle);
+        Assert.assertEquals("Validate Header Title" ,
+                expectedHeaderTitle,
+                actualHeaderTitle);
     }
 }
