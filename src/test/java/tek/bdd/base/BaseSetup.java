@@ -22,7 +22,7 @@ public class BaseSetup {
 
     public void driverQuit() {
         if (driver != null)
-            driver.close();
+            driver.quit();
     }
 
     //Ready only Getter to read get Driver instance.

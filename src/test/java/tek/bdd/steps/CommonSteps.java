@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import tek.bdd.pages.CommonPage;
 import tek.bdd.utility.SeleniumUtility;
 
 import java.time.Duration;
@@ -35,8 +36,7 @@ public class CommonSteps extends SeleniumUtility {
 
     @Then("Validate the header title is {string}")
     public void validateHeaderTitle(String expectedHeaderTitle) {
-        By pageTitle = By.xpath("//mat-toolbar/span[1]");
-        String actualHeaderTitle = getElementText(pageTitle);
+        String actualHeaderTitle = getElementText(CommonPage.pageTitle);
         Assert.assertEquals("Validate Header Title" ,
                 expectedHeaderTitle,
                 actualHeaderTitle);
