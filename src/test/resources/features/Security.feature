@@ -20,3 +20,18 @@ Feature: Application Security Functions
     When Click on login button
     Then Validate the header title is "Tek Insurance App"
     Then Validate logged in username is "Supervisor"
+
+  @US_6
+  Scenario Outline: Validate negative data to login
+    When Enter username as "<username>"
+    When Enter password as "<password>"
+    When Click on login button
+    Then Validate error message "<errorMessage>"
+
+    Examples:
+      | username      | password       | errorMessage         |
+      | wrongUsername | tek_supervisor | User not found       |
+      | supervisor    | wrong password | Password Not Matched |
+      | MohammadCSR   | tek_supervisor | User not found       |
+      | Ali           | tek_supervisor | User not found       |
+

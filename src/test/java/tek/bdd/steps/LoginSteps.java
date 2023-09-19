@@ -52,4 +52,12 @@ public class LoginSteps extends SeleniumUtility {
               actualUsernameReplaced);
 
     }
+
+    @Then("Validate error message {string}")
+    public void validateErrorMessage(String expectedErrorMessage) {
+       String actualErrorMessage = getElementText(LoginPage.ERROR_BANNER);
+       Assert.assertEquals("Validate Error message" ,
+               expectedErrorMessage,
+               actualErrorMessage);
+    }
 }
