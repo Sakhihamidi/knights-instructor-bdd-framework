@@ -15,4 +15,16 @@ public class SeleniumUtility extends BaseSetup {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         return element.getText();
     }
+
+    public boolean isElementEnabled(By locator) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofMinutes(1));
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        return element.isEnabled();
+    }
+
+    public void enterValue(By locator, String text) {
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofMinutes(1));
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        element.sendKeys(text);
+    }
 }
