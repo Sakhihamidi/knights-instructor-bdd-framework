@@ -10,21 +10,34 @@ import java.time.Duration;
 
 public class SeleniumUtility extends BaseSetup {
 
+    private WebDriverWait getWait() {
+        return new WebDriverWait(getDriver(), Duration.ofMinutes(1));
+    }
+
+    private WebElement waitUntilVisibilityOfElement(By locator) {
+        return getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    private WebElement waitUntilElementClickable(By locator) {
+        return getWait().until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    public void clickOnElement(By locator) {
+        waitUntilElementClickable(locator).click();
+    }
+
     public String getElementText(By locator) {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofMinutes(1));
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        WebElement element = waitUntilVisibilityOfElement(locator);
         return element.getText();
     }
 
     public boolean isElementEnabled(By locator) {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofMinutes(1));
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        WebElement element = waitUntilVisibilityOfElement(locator);
         return element.isEnabled();
     }
 
     public void enterValue(By locator, String text) {
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofMinutes(1));
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        WebElement element = waitUntilVisibilityOfElement(locator);
         element.sendKeys(text);
     }
 }

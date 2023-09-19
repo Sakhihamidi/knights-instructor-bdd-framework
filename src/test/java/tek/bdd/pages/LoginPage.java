@@ -9,4 +9,6 @@ public class LoginPage {
 
     public final static By USERNAME = By.name("username");
     public final static By PASSWORD = By.name("password");
+
+    public final static By LOGGED_IN_USERNAME = By.xpath("//mat-toolbar/button[2]/span[1]");
 }

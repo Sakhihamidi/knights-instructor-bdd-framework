@@ -9,3 +9,10 @@ Feature: Application Security Functions
     When Enter username as "supervisor"
     When Enter password as "tek_supervisor"
     Then Validate login button is "enabled"
+
+  Scenario: Validate login with valid username and password
+    When Enter username as "supervisor"
+    When Enter password as "tek_supervisor"
+    When Click on login button
+    Then Validate the header title is "Tek Insurance App"
+    Then Validate logged in username is "Supervisor"

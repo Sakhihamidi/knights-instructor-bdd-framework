@@ -35,4 +35,21 @@ public class LoginSteps extends SeleniumUtility {
     public void enterPassword(String password) {
         enterValue(LoginPage.PASSWORD, password);
     }
+
+    @When("Click on login button")
+    public void clickOnLoginButton() throws InterruptedException{
+        clickOnElement(LoginPage.LOGIN_BUTTON);
+        Thread.sleep(1000);
+    }
+
+    @Then("Validate logged in username is {string}")
+    public void validateLoggedInUsername(String expectedUsername) {
+      String actualUsername = getElementText(LoginPage.LOGGED_IN_USERNAME);
+      String actualUsernameReplaced= actualUsername.replace("account_circle", "")
+              .trim();
+      Assert.assertEquals("Validate Logged in user name",
+              expectedUsername,
+              actualUsernameReplaced);
+
+    }
 }
