@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import tek.bdd.base.BaseSetup;
 
 import java.time.Duration;
+import java.util.List;
 
 public class SeleniumUtility extends BaseSetup {
 
@@ -20,6 +21,10 @@ public class SeleniumUtility extends BaseSetup {
 
     private WebElement waitUntilElementClickable(By locator) {
         return getWait().until(ExpectedConditions.elementToBeClickable(locator));
+    }
+
+    private List<WebElement> waitUntilVisibilityOfAllElement(By locator) {
+        return getWait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
     }
 
     public void clickOnElement(By locator) {
@@ -39,5 +44,10 @@ public class SeleniumUtility extends BaseSetup {
     public void enterValue(By locator, String text) {
         WebElement element = waitUntilVisibilityOfElement(locator);
         element.sendKeys(text);
+    }
+
+    public List<WebElement> getListOfElements(By locator) {
+        List<WebElement> elements = waitUntilVisibilityOfAllElement(locator);
+        return elements;
     }
 }
