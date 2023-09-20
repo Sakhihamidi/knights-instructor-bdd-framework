@@ -2,6 +2,7 @@ package tek.bdd.steps;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -40,5 +41,20 @@ public class CommonSteps extends SeleniumUtility {
         Assert.assertEquals("Validate Header Title" ,
                 expectedHeaderTitle,
                 actualHeaderTitle);
+    }
+
+    @When("Wait {int} Second")
+    public void waitInSeconds(Integer seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        }catch (InterruptedException e) {
+            Assert.fail("Interrupted Exception happened on Wait Step");
+        }
+    }
+
+    @When("Click on {string} Link")
+    public void clickOnLink(String linkTexts) {
+      By locator = CommonPage.getLinkLocator(linkTexts);
+      clickOnElement(locator);
     }
 }

@@ -1,5 +1,6 @@
 package tek.bdd.steps;
 
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -59,5 +60,12 @@ public class LoginSteps extends SeleniumUtility {
        Assert.assertEquals("Validate Error message" ,
                expectedErrorMessage,
                actualErrorMessage);
+    }
+
+    @Given("Login with username as {string} and password as {string}")
+    public void loginWithUsernameAndPassword(String username, String password) {
+        enterValue(LoginPage.USERNAME, username);
+        enterValue(LoginPage.PASSWORD, password);
+        clickOnElement(LoginPage.LOGIN_BUTTON);
     }
 }
