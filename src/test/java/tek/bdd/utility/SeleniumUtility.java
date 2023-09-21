@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import tek.bdd.base.BaseSetup;
+import tek.bdd.pages.AccountsPage;
 
 import java.time.Duration;
 import java.util.List;
@@ -58,5 +59,16 @@ public class SeleniumUtility extends BaseSetup {
         TakesScreenshot screenshot = (TakesScreenshot) getDriver();
         //for cucumber reports Output Type should Byte[]
         return screenshot.getScreenshotAs(OutputType.BYTES);
+    }
+
+    public void selectFromDropDown(By locator, String option) {
+        List<WebElement> itemPerPageOptions = getListOfElements(locator);
+
+        for(WebElement element : itemPerPageOptions) {
+            String text = element.getText();
+            if (text.contains(option)) {
+                element.click();
+            }
+        }
     }
 }
