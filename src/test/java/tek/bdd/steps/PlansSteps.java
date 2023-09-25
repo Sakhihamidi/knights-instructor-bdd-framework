@@ -1,5 +1,6 @@
 package tek.bdd.steps;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
@@ -7,6 +8,8 @@ import tek.bdd.pages.PlansPage;
 import tek.bdd.utility.SeleniumUtility;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class PlansSteps extends SeleniumUtility {
 
@@ -28,12 +31,33 @@ public class PlansSteps extends SeleniumUtility {
 
     @Then("Validate All Plans are Valid")
     public void validateAllPlansAreValid() {
-       List<WebElement> elements = getListOfElements(PlansPage.PLAN_EXPIRED_COLUMN);
+        List<WebElement> elements = getListOfElements(PlansPage.PLAN_EXPIRED_COLUMN);
 
-       for(WebElement element : elements) {
-         String actualText =  element.getText();
-         Assert.assertEquals("Validate All Plans are Valid", "Valid", actualText);
-       }
+        for (WebElement element : elements) {
+            String actualText = element.getText();
+            Assert.assertEquals("Validate All Plans are Valid", "Valid", actualText);
+        }
+    }
+
+    @Then("validate plan table header")
+    public void validate_plan_table_header(DataTable dataTable) {
+        // A data table as List,
+        // A data table as Map
+        // a data table as List<Maps>
+
+        List<Map<String, String>> tableMap= dataTable.asMaps();
+        List<WebElement> headerElements = getListOfElements(PlansPage.PLAN_TABLE_HEADER_COLUMNS);
+
+        Map<String, String> expectedHeaders = tableMap.get(0);
+
+        for (int i = 0 ; i < headerElements.size(); i ++ ) {
+            String actualHeader = headerElements.get(i).getText();
+            String expectedHeader = expectedHeaders.get(String.valueOf(i));
+
+            Assert.assertEquals("Validate plan table header",
+                    expectedHeader,
+                    actualHeader);
+        }
     }
 
 }

@@ -8,4 +8,6 @@ public class PlansPage {
 
     public final static By TABLE_ROW_LOCATOR = By.xpath("//table/tbody/tr");
     public final static By PLAN_EXPIRED_COLUMN = By.xpath("//table/tbody/tr/td[6]");
+
+    public final static By PLAN_TABLE_HEADER_COLUMNS = By.xpath("//table/thead/tr/th");
 }
