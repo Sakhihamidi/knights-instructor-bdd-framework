@@ -37,3 +37,22 @@ Feature: CSR Plans Page Feature
       | Boat       | System    | Valid     |
       | Renters    | System    | Valid     |
       | Auto       | System    | Valid     |
+
+  @US_15
+  Scenario: Validate Plan Table header with single list.
+    Then Validate Section title is "Plans"
+    Then Validate table header with single list
+      | Plan Type    |
+      | Base Price   |
+      | Date Expire  |
+      | Created By   |
+      | Date Created |
+      | Plan Expired |
+
+  @US_16
+  Scenario: Validate Plan Table header with single map
+    Then Validate Section title is "Plans"
+    Then Validate Plan Data first row only with single map
+      | planType  | Motorcycle |
+      | createdBy | System     |
+      | isExpired | Valid      |
