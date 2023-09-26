@@ -85,4 +85,28 @@ public class PlansSteps extends SeleniumUtility {
         }
     }
 
+    @Then("Validate plan table data with maps")
+    public void validate_plan_table_data_with_maps(DataTable dataTable) {
+        //in this example data table with headers, we should convert to List<Maps>
+       List<Map<String, String>> dataTableMaps = dataTable.asMaps();
+
+       for (int row = 0 ; row < dataTableMaps.size(); row ++ ) {
+           Map<String, String> rowData = dataTableMaps.get(row);
+           //Validate Plan type
+           String expectedPlanType = rowData.get("planType");
+           String actualPlanType = getElementText(PlansPage.getTablePlanTypeColumn(row + 1));
+           Assert.assertEquals("Validate Plan Type" , expectedPlanType, actualPlanType);
+
+           //Validate Created By
+           String expectedCreatedBy = rowData.get("createdBy");
+           String actualCreatedBy = getElementText(PlansPage.getTableCreatedByColumn(row + 1));
+           Assert.assertEquals("Validate Created By", expectedCreatedBy, actualCreatedBy);
+
+           //Validate is Expired
+           String expectedIsExpired = rowData.get("isExpired");
+           String actualIsExpired = getElementText(PlansPage.getTableIsExpiredColumn(row + 1));
+           Assert.assertEquals("Validate is expired", expectedIsExpired, actualIsExpired);
+       }
+    }
+
 }

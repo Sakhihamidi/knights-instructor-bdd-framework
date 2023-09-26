@@ -27,3 +27,13 @@ Feature: CSR Plans Page Feature
       | Boat       | System | Valid |
       | Renters    | System | Valid |
       | Auto       | System | Valid |
+
+  @US_14
+  Scenario: Validate Plan Data using map data table
+    Then Validate Section title is "Plans"
+    Then Validate plan table data with maps
+      | planType   | createdBy | isExpired |
+      | Motorcycle | System    | Valid     |
+      | Boat       | System    | Valid     |
+      | Renters    | System    | Valid     |
+      | Auto       | System    | Valid     |
