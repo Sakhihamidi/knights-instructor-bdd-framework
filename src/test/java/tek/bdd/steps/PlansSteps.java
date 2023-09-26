@@ -41,18 +41,18 @@ public class PlansSteps extends SeleniumUtility {
 
     @Then("validate plan table header")
     public void validate_plan_table_header(DataTable dataTable) {
-        // A data table as List,
-        // A data table as Map
+        // A data table as List<Lists>,
         // a data table as List<Maps>
 
-        List<Map<String, String>> tableMap= dataTable.asMaps();
+        List<List<String>> tableAsList = dataTable.asLists();
+
         List<WebElement> headerElements = getListOfElements(PlansPage.PLAN_TABLE_HEADER_COLUMNS);
 
-        Map<String, String> expectedHeaders = tableMap.get(0);
+        List<String> expectedHeaders = tableAsList.get(0);
 
         for (int i = 0 ; i < headerElements.size(); i ++ ) {
             String actualHeader = headerElements.get(i).getText();
-            String expectedHeader = expectedHeaders.get(String.valueOf(i));
+            String expectedHeader = expectedHeaders.get(i);
 
             Assert.assertEquals("Validate plan table header",
                     expectedHeader,

@@ -17,5 +17,4 @@ Feature: CSR Plans Page Feature
   Scenario: Validate plan code headers
     Then Validate Section title is "Plans"
     Then validate plan table header
-      | 0         | 1          | 2           | 3          | 4            | 5            |
       | Plan Type | Base Price | Date Expire | Created By | Date Created | Plan Expired |
