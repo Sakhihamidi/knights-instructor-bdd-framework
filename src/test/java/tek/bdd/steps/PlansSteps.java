@@ -60,4 +60,29 @@ public class PlansSteps extends SeleniumUtility {
         }
     }
 
+    @Then("Validate plan table data")
+    public void validate_plan_table_data(DataTable dataTable) {
+        //In this example data table is without header and should convert to List<List>
+        List<List<String>> dataTableAsList = dataTable.asLists();
+
+        for (int row = 0 ; row < dataTableAsList.size() ; row ++ ) {
+            List<String> rowData = dataTableAsList.get(row);
+            //Validate plan type columns
+            String expectedPlanType = rowData.get(0);
+            String actualPlanType = getElementText(PlansPage.getTablePlanTypeColumn(row + 1));
+            Assert.assertEquals("Validate Table Plan Type" , expectedPlanType, actualPlanType);
+
+            //Validated Created By Column
+            String expectedCreatedBy = rowData.get(1);
+            String actualCreatedBy = getElementText(PlansPage.getTableCreatedByColumn(row + 1));
+            Assert.assertEquals("Validate Table created by", expectedCreatedBy, actualCreatedBy);
+
+            //Validate Plan Expired Column
+            String expectedPlanExpired = rowData.get(2);
+            String actualPlanExpired = getElementText(PlansPage.getTableIsExpiredColumn(row + 1));
+            Assert.assertEquals("Validate Table plan expired" , expectedPlanExpired, actualPlanExpired);
+
+        }
+    }
+
 }

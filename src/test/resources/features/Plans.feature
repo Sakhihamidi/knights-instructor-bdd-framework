@@ -18,3 +18,12 @@ Feature: CSR Plans Page Feature
     Then Validate Section title is "Plans"
     Then validate plan table header
       | Plan Type | Base Price | Date Expire | Created By | Date Created | Plan Expired |
+
+  @US_13
+  Scenario: Validate Plan Data
+    Then Validate Section title is "Plans"
+    Then Validate plan table data
+      | Motorcycle | System | Valid |
+      | Boat       | System | Valid |
+      | Renters    | System | Valid |
+      | Auto       | System | Valid |
