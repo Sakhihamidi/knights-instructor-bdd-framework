@@ -2,6 +2,7 @@ package tek.bdd.base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -31,7 +32,7 @@ public class BaseSetup {
             FileInputStream configFile = new FileInputStream(configFilePath);
             properties.load(configFile);
 
-        }catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -41,7 +42,10 @@ public class BaseSetup {
 
 
         if (browserType.equalsIgnoreCase("chrome")) {
-            driver = new ChromeDriver();
+            //Add headless option to Chrome browser
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--headless");
+            driver = new ChromeDriver(options);
         } else if (browserType.equalsIgnoreCase("firefox")) {
             driver = new FirefoxDriver();
         } else if (browserType.equalsIgnoreCase("edge")) {
