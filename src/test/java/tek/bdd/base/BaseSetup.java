@@ -14,6 +14,7 @@ import java.util.Properties;
 import java.util.function.BinaryOperator;
 
 public class BaseSetup {
+    // Adding some comments
 
     //Encapsulation Concept of Java
     private static WebDriver driver;
