@@ -15,7 +15,7 @@ import java.util.List;
 public class SeleniumUtility extends BaseSetup {
 
     private WebDriverWait getWait() {
-        return new WebDriverWait(getDriver(), Duration.ofMinutes(1));
+        return new WebDriverWait(getDriver(), Duration.ofMinutes(5));
     }
 
     private WebElement waitUntilVisibilityOfElement(By locator) {
