@@ -44,8 +44,14 @@ public class BaseSetup {
 
         if (browserType.equalsIgnoreCase("chrome")) {
             //Add headless option to Chrome browser
+            /*
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--headless");
+            you should create the object of option and pass its argument fo chrome driver.
+             */
+
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments(("--Headless"));
             driver = new ChromeDriver(options);
         } else if (browserType.equalsIgnoreCase("firefox")) {
             driver = new FirefoxDriver();

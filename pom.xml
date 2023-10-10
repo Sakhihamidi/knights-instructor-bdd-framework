@@ -15,6 +15,7 @@
     </properties>
     <!-- Adding Selenium Dependencies to this project -->
     <dependencies>
+
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
